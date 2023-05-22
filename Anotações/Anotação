@@ -1,0 +1,69 @@
+ORM : Mapeamento de objetos relacionais (annotations/anotações)
+
+O arquivo application-test.properties equivale a configuração do banco de dados
+H2 (banco de dados em memória do Java), presente na biblioteca/dependencia do maven.
+
+As confifurações são respectivamente:
+
+URL do banco
+Nome do usuário
+Senha
+
+Configuração via web para acessar e gerenciar o banco (comandos apresentados no bloco H2 Client)
+
+E por fim é especificado a apresentação das consultas sql na aba console do Spring
+
+Sobre as anotações
+
+@Entity define que a classe será uma tabela no Banco de Dados(BD).
+@Table(name= "nome_da_tabela_no_banco_de_dados") insere o nome que for passado na tabela do BD.
+
+@Id: definir um campo como chave primária de uma tabela/classe.
+@GeneratedValue(strategy = GenerationType.IDENTITY) definir que o banco de dados realizará o auto incremento dos IDs.
+
+@Column(name ="nome_escolhido") renomeia essa coluna no banco(customiza o nome da coluna no banco), se não fizer isso a coluna é
+criada com o mesmo nome que foi especificado na classe.
+
+Para rodar o projeto:
+
+--> clica no botão verde 
+--> abre a lista local -
+--> clica com botão direito em cima do projeto 
+--> clica em restart
+--> espera carregar
+
+Acessa o banco por meio da URL inserida no doc application-test.properties, inserindo o localhost:8080 antes
+
+// spring.h2.console.path=/h2-console // 
+localhost:8080/h2-console.
+
+Para conectar ao banco confere o campo JDBC URL do banco está igual ao do arquivo application-test.properties.
+e conecta. Ver dados no banco: clica na tabela --> clica no botão "run"
+
+
+@column(columnDefinition = "TEXT") Salva no BD o campo de descrição como texto e não como um varchar(que suporta apenas 255), 
+o text aceita textos mais longos --> valores mais longos não podem salvo apenas como uma string.
+
+classe DTO: Classe com elementos básicos de cada game
+
+Repository é a camada responsável por fazer consultas/operações no banco
+Quando extend a interface JPA é necessário inserir o nome da classe e o tipo do id da classe
+
+Service é um componente responsável por implementar as regras de negócios, ações/validações do sistema
+
+@Service //registra a classe como um componente no sistema, ele pode injetar um componente no outro
+
+@Autowired //injetando uma instância do gameRepository na classe gameService
+
+BeanUtils.copyProperties(entity, this): serve para automatizar a inserção dos atributos no construtor, só funciona com os getters e setters
+
+@Query(nativeQuery = true falar sobre
+
+
+
+pring.datasource.url=jdbc:mysql://containers-us-west-51.railway.app:8074/railway
+spring.datasource.username=root
+spring.datasource.password=wkyXMeGnzZqhPpBkmTB5
+
+
+
